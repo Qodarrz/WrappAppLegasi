@@ -20,9 +20,7 @@ android {
 
     defaultConfig {
         applicationId = "go.id.kotabogor.legasi"
-        
-        // PENTING: Ganti flutter.minSdkVersion jadi 21 secara manual
-        minSdk = flutter.minSdkVersion 
+        minSdk = 21 
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
@@ -32,9 +30,10 @@ android {
 
     buildTypes {
         release {
+            // Menggunakan signing debug untuk testing, pastikan ganti saat production
             signingConfig = signingConfigs.getByName("debug")
             
-            // Wajib TRUE untuk rilis ke Play Store agar ringan & kencang
+            // OPTIMASI: Menghapus kode yang tidak terpakai
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
